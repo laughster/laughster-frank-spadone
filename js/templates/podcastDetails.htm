@@ -1,0 +1,142 @@
+<template>
+    <!-- Initial Page, "data-name" contains page name -->
+    <div data-name="podcastDetails" class="page bg-color-violete-gradient visible-navbar">
+        <div class="navbar navbar-details">
+            <div class="navbar-inner">
+                <div class="d-flex fullwidth text-color-white justify-content-between align-items-center">
+                    <div class="size-32 text-color-white strong paddLeftRight20" data-target="title"></div>
+                    <a class="back relative right text-color-white paddLeftRight15 paddTopBottom5">
+                        <span class="fa-stack size-22">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fas fa-times fa-stack-1x text-color-red size-30"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div id="wrapSinglePodcast" class="wrapSinglePodcast">
+                <div class="hidden"><a data-target="click-to-track" href="#" data-action="trackclicks" data-context="trackMainSection" data-etype="4" data-id="{{id}}"></a></div>
+                <div class="padd30">
+                    <div class="text-align-center">
+                        <div class="inline-block">
+                            <div class="image-holder fixed-width-100">
+                                <div class="bg-image overflow round10 fullpadding" style="background-image: url('{{imgAPP}}');"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="padd20"></div>
+                    <div class="size-26 text-color-white text-align-left lineheight120 animated {{classAnimatedTitle}}">
+                        {{title}}
+                    </div>
+                    {{#if url}}
+                        <div class="padd20"></div>
+                        <!-- Wrap player here -->
+                        <div class="wrapPlayer animated {{classAnimatedPlayer}}">
+                            <audio id="player" crossorigin playsinline>
+                                <source src="{{url}}" type="{{type}}">
+                            </audio>
+                            <div class="wrap-custom-player-controls">
+                                <div class="buttons text-align-center d-flex align-items-center justify-content-space-between">
+                                    <div class="">
+                                        <a id="prevplay" href="#" @click="playNext({{id}}, 'prev')" class="size-44 wrap-custom-player-playbutton link">
+                                            <div class="bg-prev-button bg-image animated fadeInLeft"></div>
+                                        </a>
+                                    </div>
+                                    <div id="buttons-play" class="inline-block text-align-center buttons-play {{classPlayButton}}">
+                                        <a id="playbtn" href="#" class="size-44 wrap-custom-player-playbutton fixed-width-70">
+                                            <div class="bg-play-button bg-image animated zoomIn"></div>
+                                        </a>
+                                        <a href="#" class="size-44 wrap-custom-player-pausebutton fixed-width-70">
+                                            <div class="wrap-custom-player-preloader abs top0 left0 fullwidth fullheight">
+                                                <div class="fineloader"></div>
+                                            </div>
+                                            <div class="bg-pause-button bg-image animated zoomIn"></div>
+                                        </a>
+                                    </div>
+                                    <div class="">
+                                        <a id="nextplay" href="#" @click="playNext({{id}}, 'next')" class="size-44 wrap-custom-player-playbutton link">
+                                            <div class="bg-next-button bg-image animated fadeInRight"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+  return {
+      data() {
+            return {
+              classAnimatedPlayer: "fadeInUp",
+              classAnimatedTitle: "fadeIn",
+              classPlayButton: ""
+            }
+        },
+    on: {
+      pageAfterIn: function () {
+            var self = this;
+            console.log(this.url);
+            const player = new Plyr('audio', {
+                controls: ['progress']
+            });
+            window.player = player;
+            $$("#buttons-play").on("click", function(){
+               togglePlay(player, self);
+            });
+      },
+      pageBeforeIn: function () {
+          $$("#wrapSingleVideo a[data-target='click-to-track']").trigger("click");
+      },
+      pageBeforeOut: function () {
+        // page has left the view
+      },
+    },
+    methods: {
+        playNext: function(id, flag) {
+            var self=this;
+            player.stop();
+            self.$setState({
+                classAnimatedPlayer: "fadeOutUp",
+                classAnimatedTitle: "fadeOut",
+                classPlayButton: "paused"
+            });
+            
+            
+            var podcastEpisode=getPodcastEpisodeFromCache(id, flag);
+            if(podcastEpisode!==null){
+                
+                //update context
+                podcastEpisode.classAnimatedPlayer="fadeInUp";
+                podcastEpisode.classAnimatedTitle="fadeIn";
+                podcastEpisode.classPlayButton="";
+                setTimeout(function(){
+                    self.$setState(podcastEpisode);
+                    
+                    player.source = {
+                        type: 'audio',
+                        title: podcastEpisode.title,
+                        sources: [
+                            {
+                                src: podcastEpisode.url,
+                                type: podcastEpisode.type,
+                            },
+                        ],
+                    }
+                }, 500);
+                
+                
+            }
+            
+            
+            loadPlayList(self, "loadPodcastEpisode", id, flag);
+          
+        }
+    }
+  }
+</script>

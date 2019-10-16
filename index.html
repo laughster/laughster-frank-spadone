@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap:; script-src * 'unsafe-inline' 'unsafe-eval'; object-src *; style-src * 'unsafe-inline'; img-src *; media-src *; frame-src * gap:; font-src * data:; connect-src *" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>Funny Greek</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="css/framework7.bundle.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <!-- App root element -->
+    <div id="app">
+        <!-- Statusbar overlay -->
+        <div class="statusbar"></div>
+        <input type="hidden" name="appID" />
+        <input type="hidden" name="userAPPID" />
+        <!-- Your main view, should have "view-main" class -->
+        <div class="views tabs">
+            <div class="view view-login tab" id="view-login"></div>
+            <div class="view view-main tab" id="view-main"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="js/framework7.bundle.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL"></script>
+    <script type="text/javascript" src="https://unpkg.com/plyr@3"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>

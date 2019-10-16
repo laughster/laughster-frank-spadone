@@ -1,0 +1,153 @@
+<template>
+    <!-- Initial Page, "data-name" contains page name -->
+    <div data-name="events" class="page visible-navbar">
+        <div class="wrapFirstTimeNotifications {{classFirstTimeActivated}}">
+            <div class="text-align-center text-tiny animated fadeIn singleItem" data-target="first-time" data-etype="1">
+                <div class="text-color-white size-22">Find tickets faster by<br />swipping left on an event.</div>
+                <div class="padd10"></div>
+                <div>
+                    <div class="inline-block">
+                        <a href="#" class="button btn-blue button-fill round50 size-16 paddLeftRight40 paddTopBottom10" @click="firstTimeNotificationGot" data-etype="1">GOT IT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Navbar -->
+        <div class="navbar">
+            <div class="inheritheight" data-target="nav-inner" data-target-class="default">
+                <div class="abs top0 left0 fullwidth fullheight overflow forcedZIndexLower">
+                    <div class="inheritheight bg-color-white-opacity8"></div>
+                </div>
+                <div class="navbar-inner paddLeftRight20 forcedZIndexHigher">
+                    <div id="appid" class="text-color-darkblue">
+                        <div class="inline-block size-26 strong" data-target="nav-title">Events</div>
+                    </div>
+                    <div class="right text-color-white">
+                        <div class="inline-block fixed-width-50">
+                            <a class="link back relative">
+                                <div class="circled bg-image fullpadding fullwidth" style="background-image: url('{{iconthumbnailAPP}}');"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Scrollable page content -->
+        <div class="page-content">
+            <div id="wrapEvents" class="wrapWelcomeComedianIntro text-align-center bg-color-white fullheight">
+                <div class="hidden"><a data-target="click-to-track" href="#" data-action="trackclicks" data-context="trackMainSection" data-etype="1"></a></div>
+                {{#if results}}
+                    <div class="list">
+                        <ul>
+                        {{#each results}}
+                            <li class="swipeout sortableRow singleItem animated margin-bottom-7 {{classIFAPPUserOrSoldOut}}" data-sorting="{{sorting}}" data-id="{{id}}">
+                                <div class="d-flex bg-dark-alpha1 paddTopBottom10 align-items-center swipeout-content">
+                                    <a href="/eventdetails/" class="link abs top0 left0 fullwidth fullheight forcedZIndexHigher" data-id="{{id}}" data-context='{{stringify this}}'></a>
+                                    <div>
+                                        <div class="wrap-fine-date text-center text-uppercase">
+                                            <div class="wrap-day size-36 lineheight100 text-tiny">{{days}}</div>
+                                            <div class="wrap-month size-13 lineheight100">{{month}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex1 align-items-center text-align-left paddLeftRight10">
+                                        <div class="size-16 lineheight120 text-tiny">{{venuename}}</div>
+                                        <div class="padd2"></div>
+                                        <div class="size-12 lineheight120"><i class="fas fa-map-marker-alt"></i> {{city}}, {{provincename}}</div>
+                                        <div class="size-12 lineheight120 text-tiny lineheight120">
+                                            <div class="inline-block"><i class="far fa-clock size-10"></i> {{etimeformatted}} 
+                                            {{#js_if "this.ticketstatus == '2'"}}
+                                            &nbsp;&nbsp;<span class="badge bg-color-darkred">SOLD OUT</span>
+                                            {{/js_if}}
+                                            {{#if rsvped}}
+                                            &nbsp;&nbsp;<span class="badge bg-color-green1">I'M GOING</span>
+                                            {{/if}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{#js_if "this.ticketstatus == '1'"}}
+                                <div class="swipeout-actions-right">
+                                    <!-- Swipeout actions links/buttons -->
+                                    <a href="#" class="text-color-white bg-color-green size-14" @click="rsvpEvent" data-id="{{id}}" data-context="rsvpEvent">I'M GOING</a>
+                                    {{#if ticketurl}}
+                                    <a href="{{ticketurl}}" class="text-color-white bg-color-blue size-14 link external" target="_system" data-id="{{id}}" data-action="trackclicks" data-context="trackMainSection" data-etype="1" data-socialbutton="ticketurl">BUY TICKETS</a>
+                                    {{/if}}
+                                </div>
+                                {{/js_if}}
+                            </li>
+                        {{/each}}
+                        </ul>
+                    </div>
+                {{else}}
+                <div class="abs left0 top50 fullwidth text-align-center paddLeftRight20">
+                    <div class="size-18 text-color-darkblue text-align-center text-tiny animated fadeInUp">{{content}}</div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+  return {
+    on: {
+      pageInit: function () {
+        // do something on page init
+        var self = this;
+        if(localStorage.getItem("userAPPInfo")!==null){
+            var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+            if(typeof(simpleComedian)=="object"){
+                self.$setState({
+                    iconthumbnailAPP: simpleComedian.iconthumbnailAPP
+                });
+            }
+        }
+        loadComedianData(self, "loadComedianEvents");
+        
+        
+      },
+      pageBeforeIn: function () {
+          var self = this;
+          checkForFirstTime(1, self);
+          $$("#wrapEvents a[data-target='click-to-track']").trigger("click");
+      },
+      pageAfterIn: function () {
+          
+      },
+      pageBeforeOut: function () {
+        // page has left the view
+        
+      },
+    },
+    methods: {
+        firstTimeNotificationGot: function(e) {
+            var self = this;
+            var object=$$(e.target);
+            var etype=object.attr("data-etype");
+            firstTimeNotificationGot(etype, self);
+        },
+        rsvpEvent: function(e){
+            var self = this;
+            var object=$$(e.target);
+            var id=object.attr("data-id");
+            var postData={context: object.attr("data-context")};
+            postData["id"]=parseInt(id);
+            if(postData["id"]>0){
+                
+                if(appID!==null && appID!==""){
+                    postData["appid"]=appID;
+                    if(localStorage.getItem("userAPPInfo")!==null){
+                        var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+                        if(typeof(simpleComedian)!=="undefined"){
+                            if(localStorage.getItem("userAPPLoggedIn")!==null){
+                                var userAPPID=localStorage.getItem("userAPPLoggedIn");
+                                postData["userappid"]=userAPPID;
+                                sendAjaxOnFly(postData, self, object);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
+</script>

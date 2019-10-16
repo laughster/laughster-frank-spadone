@@ -1,0 +1,79 @@
+<template>
+    <div class="block animated fadeIn">
+        <div class="padd10"></div>
+        <div class="fixed-width-260 margin-auto">
+            <div class="form-with-field-white">
+                <div class="text-center bodytext br-nomobile text-color-white size-16">
+                    Please let me know where<br />
+                    you live. We’ll use this information<br />
+                    to inform you when I’m going to<br />
+                    be performing in or close to<br />
+                    your city!<br />
+                </div>
+            </div>
+            <div class="padd10"></div>
+            <div class="fixed-width-240 margin-auto">
+                <div class="fRow">
+                    <select name="aEOE_appusercountry" class="mf-select" size="1" placeholder="Country" @change="loadProvinces" data-context="wrapProvinceSBForCountry">
+                        <option selected="selected" disabled="true" value="">Country</option>
+                        {{#if countriesObject}}
+                            {{#each countriesObject}}
+                                <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+                <div class="fRow">
+                    <select name="aEOE_appuserprovince" class="mf-select" size="1" placeholder="State/Province">
+                        <option selected="selected" disabled="true" value="">State/Province</option>
+                        {{#if provincesObject}}
+                            {{#each provincesObject}}
+                                <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        {{/if}}
+                    </select>
+                </div>
+                <div class="fRow"><input type="text" class="mf-input" name="aEOE_appusercity" placeholder="City" value="{{userappcity}}" /></div>
+                <div class="padd10"></div>
+                <div class="fRow margin-bottom text-align-center">
+                    <div class="inline-block">
+                        <button type="submit" class="button button-fill btn-blue round50"><div class="size-16 paddLeftRight30 paddTopBottom10">CONTINUE</div></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data() {
+            return {
+              classInitHidden: "hidden"
+            }
+        }, 
+        on: {
+            tabInit: function () {
+                // do something on page init
+                var self = this;
+                loadWelcomeTabRegions(self);
+                loadWelcomeTabLocationComedian(self);
+                $$("select[name='aEOE_appusercountry']").attr("required", "required");
+                $$("select[name='aEOE_appuserprovince']").attr("required", "required");
+                $$("input[name='aEOE_appusercity']").attr("required", "required");
+                this.$$("#frmRegisterAPPUserFE input[name='context']").val("registerAPPUserFEStep4");
+                this.$$("form[data-action='handlewithform']").setCustomValidityFormTranslations();
+            }
+        },
+        methods: {
+            loadProvinces: function(e) {
+                var self = this;
+                var object=$$(e.target);
+                var postData={context: object.attr("data-context")};
+                postData["id"]=parseInt(object.val());
+                if(postData["id"]>0){
+                    sendAjaxOnFly(postData, null, self);
+                }
+            }
+        }
+    }
+</script>

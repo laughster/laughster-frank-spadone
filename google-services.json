@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "843387496377",
+    "firebase_url": "https://laughster-notifications.firebaseio.com",
+    "project_id": "laughster-notifications",
+    "storage_bucket": "laughster-notifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843387496377:android:4364b4739e1d6417b67868",
+        "android_client_info": {
+          "package_name": "com.laughsterapp.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843387496377-s15vjjp85jtb2m3p8mmf4kchlfnt55v0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3szzDKWbOoxEjFcc_GiEImiRzbeF4jKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843387496377-s15vjjp85jtb2m3p8mmf4kchlfnt55v0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "843387496377-f6k6ot30pdhp2durpr04fhu1khuglbsn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.laughsterapp.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

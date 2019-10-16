@@ -1,0 +1,154 @@
+<template>
+    <!-- Initial Page, "data-name" contains page name -->
+    <div data-name="event-details" class="page bg-color-violete-lightgray visible-navbar">
+        <div class="navbar navbar-details">
+            <div class="inheritheight" data-target="nav-inner" data-target-class="default">
+                <div class="abs top0 left0 fullwidth fullheight overflow forcedZIndexLower">
+                    <div class="inheritheight bg-color-violete-opacity8"></div>
+                </div>
+                <div class="navbar-inner forcedZIndexHigher">
+                    <div class="d-flex fullwidth text-color-white justify-content-between align-items-center">
+                    <div class="size-32 text-color-white strong paddLeftRight20" data-target="title">Details</div>
+                    <a class="back relative right text-color-white paddLeftRight15 paddTopBottom5">
+                        <span class="fa-stack size-22">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fas fa-times fa-stack-1x text-color-red size-30"></i>
+                        </span>
+                    </a>
+                </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div id="wrapSingleEvent" class="wrapSingleEvent bg-color-violete">
+                <div class="hidden"><a data-target="click-to-track" href="#" data-action="trackclicks" data-context="trackMainSection" data-etype="1" data-id="{{id}}"></a></div>
+                <div class="padd20 text-color-white text-align-center">
+                    <div class="size-14 strong">{{venuename}}</div>
+                    <div class="size-14 text-tiny">{{city}}, {{provincename}}</div>
+                    <div class="size-14 text-tiny">{{edateformatted}} - {{etimeformatted}}</div>
+                    {{#if ticketprice}}
+                        <div class="size-14 text-tiny">Tickets starting from: {{priceformatted}}</div>
+                    {{/if}}
+                    {{#if ticketurl}}
+                        {{#js_if "this.ticketstatus == '1'"}}
+                            <div class="padd10"></div>
+                            <div class="text-align-center">
+                                <div class="inline-block text-align-center">
+                                    <a href="{{ticketurl}}" target="_system" class="link external button btn-blue round50" data-action="trackclicks" data-context="trackMainSection" data-etype="1" data-id="{{id}}" data-socialbutton="ticketurl"><div class="size-16 paddTopBottom10 paddLeftRight20">BUY TICKETS</div></a>
+                                </div>
+                            </div>
+                        {{/js_if}}
+                    {{/if}}
+                </div>
+                
+                {{#if googleimg}}
+                    <div class="padd10"></div>
+                    <div class="wrapMap forcedZIndexHigher" data-target="gooogle-map-img"><a class="link external relative" target="_system" href="{{googlemapurl}}" data-action="trackclicks" data-context="trackMainSection" data-etype="1" data-id="{{id}}" data-socialbutton="googlemapurl">{{googleimg}}</a></div>
+                {{/if}}
+                {{#js_if "this.performing || this.performingnot"}}
+                    <div class="wrapPerformingComedians overflow bg-color-lightgray forcedZIndexLower">
+
+                        <div class="padd15 paddLeftRight25 text-align-center swiper-container swiper-init animated {{ifperformingAnimation}}" data-target="performing-comedians">
+                            <div class="padd15"></div>
+                            <div class="text-color-violete">Featuring standup comedy by:</div>
+                            <div class="paddTopBottom10 swiper-wrapper">
+                                {{#if performing}}
+                                    {{#each performing}}
+                                        <div class="wrap-single-comedian swiper-slide inline-block text-color-violete text-align-center margin-bottom-10">
+                                            {{#if applestoreurl}}
+                                            <a class="link external abs top0 left0 forcedZIndexHigher fullwidth fullheight" href="{{applestoreurl}}" target="_system"></a>
+                                            {{/if}}
+                                            <div>
+                                                <div class="fullpadding nice-circle">
+                                                    <div class="circled bg-image abs top50 left50" style="background-image: url('{{iconthumbnailAPP}}');"></div>
+                                                </div>
+                                            </div>
+                                            <div class="padd5"></div>
+                                            <div class="strong size-12 lineheight120">{{comedianname}}</div>
+                                        </div>
+                                    {{/each}}
+                                {{/if}}
+                                {{#if performingnot}}
+                                    {{#each performingnot}}
+                                        <div class="wrap-single-comedian swiper-slide inline-block text-color-violete text-align-center margin-bottom-10">
+                                            <div>
+                                                <div class="fullpadding nice-circle">
+                                                    <div class="circled bg-image abs top50 left50" style="background-image: url('{{iconthumbnailAPP}}');"></div>
+                                                </div>
+                                            </div>
+                                            <div class="padd5"></div>
+                                            <div class="strong size-12 lineheight120">{{fullname}}</div>
+                                        </div>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                {{/js_if}}
+                <div class="wrapSocialButtons bg-color-lightgray">
+                    <div class="padd10"></div>
+                    <div class="text-align-center text-color-white">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{urltosharefb}}" target="_system" class="text-color-facebook size-22 external">
+                            <span class="fa-stack">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x text-color-white"></i>
+                            </span>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet/?text=Laugh at {{firstname}} {{lastname}} Live {{edateformatted}} at {{venuenametoshare}} in {{city}}, {{provincename}}&url={{urltoshare}}" target="_system" class="text-color-twitter size-22 external">
+                            <span class="fa-stack">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x text-color-white"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{urltoshare}}&title=Laugh at {{firstname}} {{lastname}} Live {{edateformatted}} at {{venuenametoshare}} in {{city}}, {{provincename}}&summary=&source=" target="_system" class="text-color-linkedin size-22 external">
+                            <span class="fa-stack">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin-in fa-stack-1x text-color-white"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="padd20"></div>
+                </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+  return {
+    on: {
+        pageInit: function () {
+        // do something on page init
+        var self = this;
+        if(localStorage.getItem("userAPPInfo")!==null){
+            var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+            if(typeof(simpleComedian)=="object"){
+                self.$setState({
+                    iconthumbnailAPP: simpleComedian.iconthumbnailAPP,
+                    firstname: simpleComedian.firstname,
+                    lastname: simpleComedian.lastname,
+                });
+            }
+        }
+        window.setTimeout(function(){
+            loadEventGoogleImg(self, self.venueid);
+        }, 300);
+        window.setTimeout(function(){
+            loadEventPerformingComedians(self, self.id);
+        }, 300);
+      },
+      pageBeforeIn: function () {
+          $$("#wrapSingleEvent a[data-target='click-to-track']").trigger("click");
+      },
+      pageAfterIn: function () {
+          
+      },
+      pageBeforeOut: function () {
+        // page has left the view
+        
+      },
+    }
+  }
+</script>

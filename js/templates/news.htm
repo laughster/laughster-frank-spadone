@@ -1,0 +1,165 @@
+<template>
+    <!-- Initial Page, "data-name" contains page name -->
+    <div data-name="news" class="page visible-navbar">
+        <div class="wrapFirstTimeNotifications {{classFirstTimeActivated}}">
+            <div class="text-align-center text-tiny animated fadeIn singleItem" data-target="first-time" data-etype="3">
+                <div class="text-color-white size-22">Swipe left on a news<br />article to share it.</div>
+                <div class="padd10"></div>
+                <div>
+                    <div class="inline-block">
+                        <a href="#" class="button btn-blue button-fill round50 size-16 paddLeftRight40 paddTopBottom10" @click="firstTimeNotificationGot" data-etype="3">GOT IT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Navbar -->
+        <div class="navbar">
+            <div class="inheritheight" data-target="nav-inner" data-target-class="default">
+                <div class="abs top0 left0 fullwidth fullheight overflow forcedZIndexLower">
+                    <div class="inheritheight bg-color-white-opacity8"></div>
+                </div>
+                <div class="navbar-inner paddLeftRight20 forcedZIndexHigher">
+                    <div id="appid" class="text-color-darkblue">
+                        <div class="inline-block size-26 strong" data-target="nav-title">News</div>
+                    </div>
+                    <div class="right text-color-white">
+                        <div class="inline-block fixed-width-50">
+                            <a class="link back relative">
+                                <div class="circled bg-image fullpadding fullwidth" style="background-image: url('{{iconthumbnailAPP}}');"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Scrollable page content -->
+        <div class="page-content">
+            <div id="wrapNews" class="wrapWelcomeComedianIntro text-align-left paddLeftRight20 fullheight">
+                <div class="hidden"><a data-target="click-to-track" href="#" data-action="trackclicks" data-context="trackMainSection" data-etype="3"></a></div>
+                {{#if results}}
+                    <div class="list">
+                        <ul class="row">
+                        {{#each results}}
+                        {{#js_if "@index == '0'"}}
+                        <li class="swipeout sortableRow singleItem animated col-100" data-sorting="{{sorting}}" data-id="{{id}}">
+                        {{else}}
+                        <li class="swipeout sortableRow singleItem animated col-50" data-sorting="{{sorting}}" data-id="{{id}}">
+                        {{/js_if}}
+                            
+                                <div class="swipeout-content" rel="sortItem">
+                                    <div class="bg-color-white">
+                                        <div class="image-holder round5 overflow bg-color-lightgray1">
+                                            <a class="link external abs top0 left0 fullwidth fullheight" href="{{url}}" target="_system" data-action="trackclicks" data-context="trackMainSection" data-etype="3" data-socialbutton="url"></a>
+                                                <div id="data-background-{{id}}" class="bg-image fullpadding-60 lazy lazy-fade-in" data-background="{{imgAPP}}"></div>
+                                        </div>
+                                        <div class="text-holder">
+                                            <div class="padd5"></div>
+                                            <div class="size-14 text-color-blue">{{publishing_company}}</div>
+                                            {{#js_if "@index == '0'"}}
+                                                <div class="wrapNewsTitle size-20 lineheight120 strong text-color-violete">
+                                            {{else}}
+                                                <div class="wrapNewsTitle size-14 lineheight120 strong text-color-violete">
+                                            {{/js_if}}
+                                            <a class="link external text-color-violete" href="{{url}}" target="_system" data-action="trackclicks" data-context="trackMainSection" data-etype="3" data-socialbutton="url">
+                                                {{name}}
+                                            </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swipeout-actions-right">
+                                    <div class="justify-content-center">
+                                        <!-- Swipeout actions links/buttons -->
+                                        {{#js_if "@index == '0'"}}
+                                        <div class="paddTopBottom10">
+                                        {{else}}
+                                        <div class="paddTopBottom5">
+                                        {{/js_if}}
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{urltoshare}}" target="_system" class="text-color-facebook size-22 external">
+                                                <span class="fa-stack">
+                                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                                    <i class="fab fa-facebook-f fa-stack-1x text-color-white"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        {{#js_if "@index == '0'"}}
+                                        <div class="paddTopBottom10">
+                                        {{else}}
+                                        <div class="paddTopBottom5">
+                                        {{/js_if}}
+                                            <a href="https://twitter.com/intent/tweet/?text={{../userinfo.firstname}} {{../userinfo.lastname}} in the news: {{nametoshare}}.&url={{urltoshare}}" target="_system" class="text-color-twitter size-22 external">
+                                                <span class="fa-stack">
+                                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                                    <i class="fab fa-twitter fa-stack-1x text-color-white"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        {{#js_if "@index == '0'"}}
+                                        <div class="paddTopBottom10">
+                                        {{else}}
+                                        <div class="paddTopBottom5">
+                                        {{/js_if}}
+                                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{urltoshare}}&title={{../userinfo.firstname}} {{../userinfo.lastname}} in the news: {{nametoshare}}&summary=&source=" target="_system" class="text-color-linkedin size-22 external">
+                                                <span class="fa-stack">
+                                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                                    <i class="fab fa-linkedin-in fa-stack-1x text-color-white"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            {{#js_if "@index % '2' == '0'"}}
+                            <li class="border-solid-gray col-100 animated"></li>
+                            {{/js_if}}
+                        {{/each}}
+                        </ul>
+                    </div>
+                {{else}}
+                <div class="abs left0 top50 fullwidth text-align-center paddLeftRight20">
+                    <div class="size-18 text-color-darkblue text-align-center text-tiny animated fadeInUp">{{content}}</div>
+                </div>
+                {{/if}}    
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+  return {
+    on: {
+      pageInit: function () {
+            var self = this;
+            
+            if(localStorage.getItem("userAPPInfo")!==null){
+                var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+                if(typeof(simpleComedian)=="object"){
+                    self.$setState({
+                        iconthumbnailAPP: simpleComedian.iconthumbnailAPP,
+                        userinfo: simpleComedian
+                    });
+                }
+            }
+            loadComedianData(self, "loadComedianNews");
+      },
+      pageBeforeIn: function () {
+          var self = this;
+          checkForFirstTime(3, self);
+          $$("#wrapNews a[data-target='click-to-track']").trigger("click");
+      },
+      pageAfterIn: function () {
+          
+      },
+      pageBeforeOut: function () {
+        // page has left the view
+      },
+    },
+    methods: {
+        firstTimeNotificationGot: function(e) {
+            var self = this;
+            var object=$$(e.target);
+            var etype=object.attr("data-etype");
+            firstTimeNotificationGot(etype, self);
+        }
+    }
+  }
+</script>

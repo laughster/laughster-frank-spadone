@@ -1,0 +1,62 @@
+<template>
+    <div class="block animated fadeIn">
+        <div class="padd10"></div>
+        <div class="fixed-width-260 margin-auto">
+            <div class="form-with-field-white">
+                <div class="text-center bodytext br-nomobile text-color-white size-16">
+                    Sometimes comedy content can<br />
+                    get out of hand, let me know how old<br />
+                    you are and I'll make sure you only see<br />
+                    age appropriate content while on my APP.<br />
+                </div>
+                <div class="padd10"></div>
+            </div>
+            <div class="padd10"></div>
+            <div class="fixed-width-240 margin-auto">
+                <div class="fRow text-align-center">
+                    <div class="inline-block fixed-width-200" data-target="borndatepicker">
+                        <div class="row">
+                            <div class="col-33">
+                                <select name="aEOE_appuserbornday" class="mf-select" required="required"></select>
+                            </div>
+                            <div class="col-33">
+                                <select name="aEOE_appuserbornmonth" class="mf-select" required="required"></select>
+                            </div>
+                            <div class="col-33">
+                                <input type="number" class="mf-input text-align-center size-16" name="aEOE_appuserbornyear" placeholder="YYYY" autocomplete="off" maxlength="4" required="required" pattern="^((19|20)[0-9]{2})$" data-validity-title="Please Provide a valid date year." />
+                            </div>
+                        </div>
+                        <div class="hidden">
+                            <input type="hidden" class="mf-input" name="aEOE_appusercity" placeholder="City" value="{{userappcity}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="padd10"></div>
+                <div class="fRow margin-bottom text-align-center">
+                    <div class="inline-block">
+                        <button type="submit" class="button button-fill fullwidth btn-blue round50"><div class="size-16 paddLeftRight30 paddTopBottom10">LAUNCH APP</div></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data() {
+            return {
+              classInitHidden: "hidden"
+            }
+        }, 
+        on: {
+            tabInit: function () {
+                // do something on page init
+                var self = this;
+                this.$$("#frmRegisterAPPUserFE input[name='context']").val("registerAPPUserFinalFE");
+                loadWelcomeTabLocationComedian(self);
+                this.$$("form[data-action='handlewithform']").setCustomValidityFormTranslations();  
+                $$("div[data-target='borndatepicker']").bornDatePicker();
+            }
+        }
+    }
+</script>

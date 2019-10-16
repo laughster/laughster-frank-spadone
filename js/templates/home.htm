@@ -1,0 +1,316 @@
+<template>
+    <!-- Initial Page, "data-name" contains page name -->
+    <div data-name="home" class="page {{classPageBgColor}}">
+        <!-- Scrollable page content -->
+        <div class="page-content">
+            <div id="wrapWelcomeComedianIntro" class="wrapWelcomeComedianIntro text-align-center {{classFullHeight}} overflow">
+                <div class="abs bottom0 fullwidth text-align-center forcedZIndexHigher wrap-portrait-visible {{hiddenClassIfFromLogin}}">
+                    <img class="text-align-center" src="./images/Swipe_Down.png" alt="" />
+                    <div class="padd15"></div>
+                </div>
+                <div class="abs top0 left0 fullwidth fullheight signature-bg forcedZIndexHigher {{hiddenClassSignature}} {{hiddenClassIfFromLogin}}" data-target="ifappuserdetected" style="background-image: url('{{signatureThumbnailAPP}}');"></div>
+                <div class="mAOLThumb abs top0 left0 fullwidth fullheight unveil blured forcedZIndexLower overflow {{hiddenClassIfFromLogin}}">
+                    <div class="blurred-outer inheritheight">
+                        <div class="overlayViolete forcedZIndexHigher"></div>
+                        <div class="bg-image blurred fullwidth fullheight abs top0 left0 forcedZIndexLower {{classBlurBgAnimation}}" style="background-image: url('{{iconthumbnailAPP}}');" />
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wrap-content-over forcedZIndexHigher">
+                    <div class="padd20"></div>
+                    {{#js_if "this.haveonlinestore!='2'"}}
+                        <div class="wrap-store-icon abs right0 top0 paddTopBottom10 paddLeftRight15">
+                            <div class="paddTopBottom10 fixed-width-45">
+                                <div class="fullpadding">
+                                    <div class="abs wrap-badge forcedZIndexHigher">
+                                        {{#if newstoreproductsadded}}
+                                            <span class="badge color-red size-14 {{classStoreBtnBadgeHidden}}">{{newstoreproductsadded}}</span>
+                                        {{/if}}
+                                    </div>
+                                    <a class="text-color-blue1 size-24 animated abs top0 left0 fullwidth fullheight {{classStoreBtnHidden}} external forcedZIndexLower bg-image" href="{{onlinestoreurl}}" target="_system" data-action="trackclicks" data-context="trackMainSection" data-etype="9" data-socialbutton="onlinestoreurl" style="background-image: url('./images/laughster_shopping_cart.png');">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {{/js_if}}
+                    <div class="inline-block lineheight140 paddTopBottom20">
+                        <div class="padd30"></div>
+                        <div class="fixed-width-150">
+                            <div class="fullpadding nice-circle animated {{classImgAPPAnimated}} bg-color-black circled overflow">
+                                <div class="circled bg-color-black bg-image abs top50 left50 overflow" style="background-image: url('{{iconthumbnailAPP}}');"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fixed-height-100">
+                        <div class="padd10"></div>
+                        <div class="text-align-center size-26 text-color-white animated {{classFadeInUp}} {{classInitHidden}}">
+                            {{firstname}} {{lastname}}
+                        </div>
+                        {{#if twitterhandle}}
+                        <div class="text-align-center size-16 text-tiny text-color-white-opacity animated {{classFadeInUp}} {{classInitHidden}}">
+                            <a class="link external text-color-white-opacity" href="https://twitter.com/{{twitterhandle}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="twitterhandle">@{{twitterhandle}}</a>
+                        </div>
+                        {{/if}}
+                        <div class="text-align-center size-16 text-tiny text-color-white-opacity animated {{classFadeInUp}} {{classInitHidden}}">
+                            <i class="fas fa-map-marker-alt"></i> {{provincename}}, {{countryname}}
+                        </div>
+                    </div>
+                    <div class="padd25"></div>
+                    <div class="padd20"></div>
+                        <div class="text-align-center">
+                            <div class="max-width-400 margin-auto paddLeftRight20">
+                                <div class="row no-gap animated {{fadeInRight}} justify-content-center">
+                                    <div class="col-25">
+                                        <div class="fullpadding margin-bottom-10">
+                                            <div class="abs top0 right0">
+                                                {{#if neweventsadded}}
+                                                    <span class="badge color-red size-14">{{neweventsadded}}</span>
+                                                {{/if}}
+                                            </div>
+                                            <a class="abs left0 top0 fullwidth fullheight btn-graphic link" href="/events/" style="background-image: url('./images/app_events.png');">
+                                                <div class="abs left0 bottom0 fullwidth text-align-center">Events</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-25">
+                                        <div class="fullpadding margin-bottom-10">
+                                            <div class="abs top0 right0">
+                                                {{#if newvideosadded}}
+                                                    <span class="badge color-red size-14">{{newvideosadded}}</span>
+                                                {{/if}}
+                                            </div>
+                                            <a class="abs left0 top0 fullwidth fullheight btn-graphic link" href="/videos/" style="background-image: url('./images/app_videos.png');">
+                                                <div class="abs left0 bottom0 fullwidth text-align-center">Videos</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-25">
+                                        <div class="fullpadding margin-bottom-10">
+                                            <div class="abs top0 right0">
+                                                {{#if newnewsadded}}
+                                                    <span class="badge color-red size-14">{{newnewsadded}}</span>
+                                                {{/if}}
+                                            </div>
+                                            <a class="abs left0 top0 fullwidth fullheight btn-graphic link" href="/news/" style="background-image: url('./images/app_news.png');">
+                                                <div class="abs left0 bottom0 fullwidth text-align-center">News</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{#js_if "this.countPodcasts && this.countPodcasts > 0"}}
+                                    <div class="col-25">
+                                        <div class="fullpadding margin-bottom-10">
+                                            {{#js_if "this.onlyPodcast && this.onlyPodcast.isonitunes == 2"}}
+                                            <a class="abs left0 top0 fullwidth fullheight btn-graphic link external" href="{{onlyPodcast.url}}" target="_system" style="background-image: url('./images/app_podcast.png');">
+                                
+                                            {{else}}
+                                            <a class="abs left0 top0 fullwidth fullheight btn-graphic link" href="/podcasts/" style="background-image: url('./images/app_podcast.png');">
+                                            {{/js_if}}
+                                
+                                                <div class="abs left0 bottom0 fullwidth text-align-center">Podcast</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    {{/js_if}}
+                                </div>
+                            </div>
+                        </div>
+                    <div class="padd20"></div>
+                </div>
+            </div>
+            <div id="wrapBiography" class="wrapWelcomeComedianIntro text-align-left bg-color-lightgray paddTopBottom30 paddLeftRight35 animated overflow zoomIn {{classInitHidden}} {{classHiddenIfFromLogin}}">
+                <div class="text-color-darkblue size-16 lineheight120 strong">{{biographytitle}}</div>
+                <div class="padd10"></div>
+                <div class="bodytext text-color-gray text-align-left size-14">
+                    {{biographydescription}}
+                </div>
+                <div class="padd15"></div>
+                <div class="fRow margin-bottom text-align-center">
+                    <div class="inline-block">
+                        <a href="mailto:{{email}}" class="button button-fill btn-blue round50 link external text-uppercase" data-action="trackclicks" data-context="trackBooking"><div class="size-16 paddLeftRight20 paddTopBottom10">Book {{firstname}}</div></a>
+                    </div>
+                </div>
+            </div>
+            <div id="wrapGallery" class="wrapWelcomeComedianIntro text-align-center overflow animated fadeIn {{classInitHidden}} {{classHiddenIfFromLogin}}">
+                {{#if results}}
+                    <div class="wrap-masonry">
+                        {{#each results}}
+                            <div class="sortableRow singleItem animated fadeIn float-left" rel="sortItem" data-sorting="{{sorting}}" data-id="{{id}}" data-index="{{@index}}">
+                                <a href="https://instagram.com/p/{{shortcode}}" class="link external abs top0 left0 fullwidth fullheight forcedZIndexHigher" data-id="{{id}}" target="_system"></a>
+                                <div class="forcedZIndexLower">
+                                    <div class="image-holder fullwidth">
+                                        <div class="bg-image fullpadding" style="background-image: url('{{imgAPP}}');"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {{/each}}
+                        <div class="noFloat"></div>
+                    </div>
+                {{/if}}
+            </div>
+            <div id="wrapSocial" class="wrapWelcomeComedianIntro text-align-left paddTopBottom30 paddLeftRight35 animated overflow fadeIn bg-color-white {{classInitHidden}} {{classHiddenIfFromLogin}}">
+                {{#if wwwurl}}
+                    <div class="fRow text-align-center">
+                        <div class="inline-block">
+                            <a class="external button button-fill btn-blue round50" href="{{wwwurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="wwwurl"><div class="size-16 paddLeftRight20 paddTopBottom10">VISIT MY WEBSITE</div></a>
+                        </div>
+                    </div>
+                    <div class="padd10"></div>
+                {{/if}}
+                <div class="fRow text-align-center">
+                    <div class="inline-block text-align-center">
+                        {{#if facebookurl}}
+                            <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
+                                <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{facebookurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="facebookurl">
+                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                        <div class="abs left0 top50 fullwidth">
+                                            <i class="fab fa-facebook-f abs left50 top50"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/if}}
+                        {{#if twitterhandle}}
+                            <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
+                                <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="https://twitter.com/{{twitterhandle}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="twitterhandle">
+                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                        <div class="abs left0 top50 fullwidth">
+                                            <i class="fab fa-twitter abs left50 top50"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/if}}
+                        {{#if instagramurl}}
+                            <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
+                                <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{instagramurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="instagramurl">
+                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                        <div class="abs left0 top50 fullwidth">
+                                            <i class="fab fa-instagram abs left50 top50"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/if}}
+                        {{#if youtubeurl}}
+                            <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
+                                <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{youtubeurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="youtubeurl">
+                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                        <div class="abs left0 top50 fullwidth">
+                                            <i class="fab fa-youtube abs left50 top50"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/if}}
+                        {{#if linkedinurl}}
+                            <div class="inline-block fixed-width-50 padd5">
+                                <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{linkedinurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="linkedinurl">
+                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                        <div class="abs left0 top50 fullwidth">
+                                            <i class="fab fa-linkedin-in abs left50 top50"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/if}}
+                        {{#if imdburl}}
+                            <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
+                                <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{imdburl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="imdburl">
+                                    <div class="circled abs left0 fullwidth text-color-white text-align-center size-18">
+                                        <div class="abs left0 top50 fullwidth">
+                                            IMDB
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/if}}
+                        {{#if vimeourl}}
+                            <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
+                                <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{vimeourl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="vimeourl">
+                                    <div class="circled abs left0 fullwidth text-color-white text-align-center size-26">
+                                        <div class="abs left0 top50 fullwidth">
+                                            <i class="fab fa-vimeo-v abs left50 top50"></i>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+  return {
+      data() {
+            return {
+              classInitHidden: homePageReachedFromLogin ? "" : "hidden",
+              classStoreBtnHidden: "zeroopacity",
+              classStoreBtnBadgeHidden: "zeroopacity",
+              hiddenClassSignature: homePageReachedFromLogin ? "" : "hidden",
+              hiddenClassIfFromLogin: homePageReachedFromLogin ? "hidden" : "",
+              classImgAPPAnimated: homePageReachedFromLogin ? "zeroopacity" : "",
+              classPageBgColor: homePageReachedFromLogin ? "bg-color-transparent" : "bg-color-white",
+              classFullHeight: homePageReachedFromLogin ? "fullheight" : "",
+              classHiddenIfFromLogin: homePageReachedFromLogin ? "hidden" : "",
+              classFadeInUp: "fadeInUp"
+            }
+        }, 
+        on: {
+            pageAfterIn: function () {
+            // do something on page init
+            var self = this;
+            var loadAgain=true;
+            
+            if(!homePageReloaded){
+                //Call some functions only on first page loading
+                homePageReloaded=true;
+                if(localStorage.getItem("userAPPInfo")!==null){
+                var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+                    if(typeof(simpleComedian)=="object"){
+                        loadAgain=false;
+                        self.$setState(simpleComedian);
+                        self.$setState({
+                            classInitHidden: "",
+                            classStoreBtnHidden: "zoomIn",
+                            classStoreBtnBadgeHidden: "fadeIn",
+                            classImgAPPAnimated: homePageReachedFromLogin ? "" : "fadeInDownBig",
+                            classFadeInUp: "fadeInUp",
+                            fadeInRight: "fadeInRight"
+                        });
+                        setTimeout(function(){
+                            self.$setState({
+                                classFullHeight: "",
+                                classHiddenIfFromLogin: ""
+                            });
+                        }, 1000);
+                    }
+                }
+                if(loadAgain){
+                    loadHomeAdvancedComedian(self, appID);
+                }
+                setTimeout(function(){
+                    loadComedianData(self, "loadComedianGalleries");
+                }, 1000);
+            }else{
+                self.$setState({
+                    classImgAPPAnimated: "",
+                    classInitHidden: "",
+                    classFadeInUp: "",
+                    fadeInRight: ""
+                });
+            }
+            loadComedianData(self, "loadComedianSectionViewStatistic");
+                
+            setTimeout(function(){
+                pushSetupComedian(appID);
+            }, 2000);
+        }
+        
+    }
+  }
+</script>

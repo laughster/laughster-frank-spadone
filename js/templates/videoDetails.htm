@@ -1,0 +1,62 @@
+<template>
+    <!-- Initial Page, "data-name" contains page name -->
+    <div data-name="videoDetails" class="page bg-color-black visible-navbar">
+        <div class="navbar navbar-details">
+            <div class="navbar-inner">
+                <div class="d-flex fullwidth text-color-white justify-content-between align-items-center">
+                    <div class="size-32 text-color-white strong paddLeftRight20" data-target="title"></div>
+                    <a class="back relative right text-color-white paddLeftRight15 paddTopBottom5">
+                        <span class="fa-stack size-22">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fas fa-times fa-stack-1x text-color-red size-30"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div id="wrapSingleVideo" class="wrapSingleVideo">
+                <div class="hidden"><a data-target="click-to-track" href="#" data-action="trackclicks" data-context="trackMainSection" data-etype="3" data-id="{{id}}"></a></div>
+                    {{#if url}}
+                         {{#js_if "this.etype==1"}}
+                            <div id="player" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{youtubeid}}"></div>
+                        {{/js_if}}
+                        {{#js_if "this.etype==2"}}
+                            <div id="player" class="js-player" data-plyr-provider="vimeo" data-plyr-embed-id="{{vimeoid}}"></div>
+                        {{/js_if}}
+                    {{/if}}
+                
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+  return {
+    on: {
+      pageAfterIn: function () {
+            //$$("div.wrapPlayer").wrapAudioPlayers();
+            var self = this;
+            const player = new Plyr('#player', {
+                autoplay: true
+            });
+            
+            player.on('ready', event => {
+                const instance = event.detail.plyr;
+                player.fullscreen.enter();
+            });
+
+            // Expose player so it can be used from the console
+            window.player = player;
+      },
+      pageBeforeIn: function () {
+          $$("#wrapSingleVideo a[data-target='click-to-track']").trigger("click");
+      },
+      pageBeforeOut: function () {
+        // page has left the view
+      },
+    },
+    methods: {
+        
+    }
+  }
+</script>

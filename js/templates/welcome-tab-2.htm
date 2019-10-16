@@ -1,0 +1,59 @@
+<template>
+    <div class="block animated fadeIn {{classInitHidden}}">
+        <div class="padd10"></div>
+        <div class="fixed-width-260 margin-auto">
+                <div class="form-with-field-white">
+                    <div class="text-center bodytext br-nomobile text-color-white size-16">
+                        Based on your current location<br />
+                        I think you reside in<br />
+                        <span class="strong lineheight120">{{userappcity}}, {{userappprovincename}}, {{userappcountryname}}</span>
+                        <div class="hidden">
+                            <input type="hidden" class="mf-input" name="aEOE_appusercity" placeholder="City" value="{{userappcity}}" />
+                        </div>
+                    </div>
+                    <div class="padd10"></div>
+                    <div class="bodytext text-color-white size-16">Is this correct?</div>
+                    <div class="padd10"></div>
+                    <div class="fRow text-align-center">
+                        <div class="inline-block text-align-center">
+                            <div class="inline-block paddLeftRight5">
+                                <button type="button" class="button button-fill btn-blue round50 size-16 paddLeftRight40 paddTopBottom10" @click="loadTab" data-target-tab="welcome-tab-3">YES</button>
+                            </div>
+                            <div class="inline-block paddLeftRight5">
+                                <button type="button" class="button button-fill btn-danger1 round50 size-16 paddLeftRight40 paddTopBottom10" @click="loadTab" data-target-tab="welcome-tab-4">NO</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data() {
+            return {
+              classInitHidden: "hidden"
+            }
+        }, 
+        on: {
+            tabInit: function () {
+                // do something on page init
+                var self = this;
+                loadWelcomeTabLocationComedian(self);
+                this.$$("#frmRegisterAPPUserFE input[name='context']").val("registerAPPUserFEStep2");
+            }
+        },
+        methods: {
+            loadTab: function(e) {
+                var object=$$(e.target);
+                var targetTab=object.attr("data-target-tab");
+                var appUserCity=$$("input[name='aEOE_appusercity']").val();
+                if(appUserCity==""){
+                    this.$app.dialog.alert('City not defined.');
+                    return false;
+                }
+                loadNextTab(targetTab);
+            }
+        }
+    }
+</script>
