@@ -1,6 +1,6 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.laughsterapp.app" version="1.0.2">
-  <name>Funny Greek</name>
-  <description>Funny Greek</description>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.laughster.frankspadone" version="1.0.0">
+  <name>Frank Spadone</name>
+  <description>Frank Spadone</description>
   <author href="http://www.intellicomstudios.net" email="info@intellicomstudios.net">Robin Ozolins</author>
   <content src="index.html" />
     <access origin="*" />

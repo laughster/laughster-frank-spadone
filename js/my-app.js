@@ -14,7 +14,7 @@ var pathToJSTemplates="js/templates/";
 var currentSectionTitle="";
 
 var GOOGLE_MAPS_STATIC_V3_API_KEY="AIzaSyDHD5QKg6Z6pBIPLjzo2VOTvi37t6IRJ_o";
-var appID=455847837;
+var appID=227444216;
 
 var currentLocation=false;
 
@@ -35,9 +35,9 @@ var app = new Framework7({
     // App root element
     root: '#app',
     // App Name
-    name: 'Funny Greek',
+    name: 'Frank Spadone',
     // App id
-    id: 'com.laughsterapp.app',
+    id: 'com.laughster.frankspadone',
     cache: false,
     cacheDuration: 0, /* set caching expire time to 0 */
     touch: {
