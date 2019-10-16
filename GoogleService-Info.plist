@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>843387496377-f6k6ot30pdhp2durpr04fhu1khuglbsn.apps.googleusercontent.com</string>
+	<string>90042940959-gqqu7f759lu911c9ql57is8mgeetidno.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.843387496377-f6k6ot30pdhp2durpr04fhu1khuglbsn</string>
+	<string>com.googleusercontent.apps.90042940959-gqqu7f759lu911c9ql57is8mgeetidno</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA3XWwsn2nHuEN2LDoxeXWAnCyK-8xK35s</string>
+	<string>AIzaSyBSs12mgpnPQHj7ju0rT0mdAQoe4LG3dyE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>843387496377</string>
+	<string>90042940959</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.laughsterapp.app</string>
+	<string>com.laughster.frankspadone</string>
 	<key>PROJECT_ID</key>
-	<string>laughster-notifications</string>
+	<string>laughster-frank-spadone</string>
 	<key>STORAGE_BUCKET</key>
-	<string>laughster-notifications.appspot.com</string>
+	<string>laughster-frank-spadone.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:843387496377:ios:2d3055e37a4897c9b67868</string>
+	<string>1:90042940959:ios:c6ab50aafa647354321f2a</string>
 	<key>DATABASE_URL</key>
-	<string>https://laughster-notifications.firebaseio.com</string>
+	<string>https://laughster-frank-spadone.firebaseio.com</string>
 </dict>
 </plist>

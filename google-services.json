@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "843387496377",
-    "firebase_url": "https://laughster-notifications.firebaseio.com",
-    "project_id": "laughster-notifications",
-    "storage_bucket": "laughster-notifications.appspot.com"
+    "project_number": "90042940959",
+    "firebase_url": "https://laughster-frank-spadone.firebaseio.com",
+    "project_id": "laughster-frank-spadone",
+    "storage_bucket": "laughster-frank-spadone.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:843387496377:android:4364b4739e1d6417b67868",
+        "mobilesdk_app_id": "1:90042940959:android:1e515d41a08ad293321f2a",
         "android_client_info": {
-          "package_name": "com.laughsterapp.app"
+          "package_name": "com.laughster.frankspadone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "843387496377-s15vjjp85jtb2m3p8mmf4kchlfnt55v0.apps.googleusercontent.com",
+          "client_id": "90042940959-0llbdtl6fg5jc3cg6r3jgp2oadl4smdb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD3szzDKWbOoxEjFcc_GiEImiRzbeF4jKg"
+          "current_key": "AIzaSyAX6Rc7mqjvTcBI-UVMUvWC78XC2QHwa9A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "843387496377-s15vjjp85jtb2m3p8mmf4kchlfnt55v0.apps.googleusercontent.com",
+              "client_id": "90042940959-0llbdtl6fg5jc3cg6r3jgp2oadl4smdb.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "843387496377-f6k6ot30pdhp2durpr04fhu1khuglbsn.apps.googleusercontent.com",
+              "client_id": "90042940959-gqqu7f759lu911c9ql57is8mgeetidno.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.laughsterapp.app"
+                "bundle_id": "com.laughster.frankspadone"
               }
             }
           ]
