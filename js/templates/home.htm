@@ -4,11 +4,11 @@
         <!-- Scrollable page content -->
         <div class="page-content">
             <div id="wrapWelcomeComedianIntro" class="wrapWelcomeComedianIntro text-align-center {{classFullHeight}} overflow">
-                <div class="abs bottom0 fullwidth text-align-center forcedZIndexHigher wrap-portrait-visible {{hiddenClassIfFromLogin}}">
+                <div class="abs bottom0 fullwidth text-align-center forcedZIndexHigher wrap-portrait-visible">
                     <img class="text-align-center" src="./images/Swipe_Down.png" alt="" />
                     <div class="padd15"></div>
                 </div>
-                <div class="abs top0 left0 fullwidth fullheight signature-bg forcedZIndexHigher {{hiddenClassSignature}} {{hiddenClassIfFromLogin}}" data-target="ifappuserdetected" style="background-image: url('{{signatureThumbnailAPP}}');"></div>
+                <div class="abs top0 left0 fullwidth fullheight signature-bg forcedZIndexHigher {{hiddenClassSignature}}" data-target="ifappuserdetected" style="background-image: url('{{signatureThumbnailAPP}}');"></div>
                 <div class="mAOLThumb abs top0 left0 fullwidth fullheight unveil blured forcedZIndexLower overflow {{hiddenClassIfFromLogin}}">
                     <div class="blurred-outer inheritheight">
                         <div class="overlayViolete forcedZIndexHigher"></div>
@@ -251,8 +251,8 @@
               classInitHidden: homePageReachedFromLogin ? "" : "hidden",
               classStoreBtnHidden: "zeroopacity",
               classStoreBtnBadgeHidden: "zeroopacity",
-              hiddenClassSignature: homePageReachedFromLogin ? "" : "hidden",
-              hiddenClassIfFromLogin: homePageReachedFromLogin ? "hidden" : "",
+              hiddenClassSignature: homePageReachedFromLogin ? "hiddenClassSignature" : "hidden hiddenClassSignature",
+              hiddenClassIfFromLogin: homePageReachedFromLogin ? "hidden hiddenClassIfFromLogin" : "hiddenClassIfFromLogin",
               classImgAPPAnimated: homePageReachedFromLogin ? "zeroopacity" : "",
               classPageBgColor: homePageReachedFromLogin ? "bg-color-transparent" : "bg-color-white",
               classFullHeight: homePageReachedFromLogin ? "fullheight" : "",
