@@ -17,7 +17,7 @@
                     <div class="fRow text-align-center">
                         <div class="inline-block text-align-center">
                             <div class="inline-block paddLeftRight5">
-                                <button type="button" class="button button-fill btn-blue round50 size-16 paddLeftRight40 paddTopBottom10" @click="loadTab" data-target-tab="welcome-tab-3">YES</button>
+                                <button type="button" class="button button-fill btn-white round50 size-16 paddLeftRight40 paddTopBottom10" @click="loadTab" data-target-tab="welcome-tab-3" style="color: rgb({{classOverlayColor}});">YES</button>
                             </div>
                             <div class="inline-block paddLeftRight5">
                                 <button type="button" class="button button-fill btn-danger1 round50 size-16 paddLeftRight40 paddTopBottom10" @click="loadTab" data-target-tab="welcome-tab-4">NO</button>
@@ -40,6 +40,12 @@
                 // do something on page init
                 var self = this;
                 loadWelcomeTabLocationComedian(self);
+                if(localStorage.getItem("userAPPInfo")!==null){
+                    var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+                    if(typeof(simpleComedian)=="object"){
+                        self.$setState(simpleComedian);
+                    }
+                }
                 this.$$("#frmRegisterAPPUserFE input[name='context']").val("registerAPPUserFEStep2");
             }
         },

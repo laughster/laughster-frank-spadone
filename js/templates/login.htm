@@ -11,7 +11,7 @@
                 <div class="abs top0 left0 fullwidth fullheight signature-bg forcedZIndexHigher {{hiddenClassSignature1}}" data-target="ifappuserdetected" style="background-image: url('{{signatureThumbnailAPP}}');"></div>
                 <div class="mAOLThumb abs top0 left0 fullwidth fullheight unveil forcedZIndexLower overflow">
                     <div class="blurred-outer inheritheight">
-                        <div class="overlayViolete forcedZIndexHigher"></div>
+                        <div class="forcedZIndexHigher abs top0 left0 fullwidth fullheight" style="background-color: rgba({{classOverlayColor}}, 0.6);"></div>
                         <div class="bg-image blurred fullwidth fullheight abs top0 left0 forcedZIndexLower" style="background-image: url('{{iconthumbnailAPP}}');" />
 
                         </div>
@@ -72,7 +72,8 @@
     data() {
         return {
             classFullHeight: "fullheight",
-            hiddenClassSignature1: "hidden"
+            hiddenClassSignature1: "hidden",
+            classOverlayColor: "35,24,82"
         }
     }, 
     on: {

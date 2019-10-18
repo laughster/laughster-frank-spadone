@@ -34,7 +34,7 @@
                 <div class="padd10"></div>
                 <div class="fRow margin-bottom text-align-center">
                     <div class="inline-block">
-                        <button type="submit" class="button button-fill fullwidth btn-blue round50"><div class="size-16 paddLeftRight30 paddTopBottom10">LAUNCH APP</div></button>
+                        <button type="submit" class="button button-fill fullwidth round50" style="background: rgb({{classButtonColor}}); border-color: rgb({{classButtonColor}});"><div class="size-16 paddLeftRight30 paddTopBottom10">LAUNCH APP</div></button>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,8 @@
     return {
         data() {
             return {
-              classInitHidden: "hidden"
+              classInitHidden: "hidden",
+              classButtonColor: "28,139,211"
             }
         }, 
         on: {
@@ -54,6 +55,14 @@
                 var self = this;
                 this.$$("#frmRegisterAPPUserFE input[name='context']").val("registerAPPUserFinalFE");
                 loadWelcomeTabLocationComedian(self);
+                
+                if(localStorage.getItem("userAPPInfo")!==null){
+                    var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+                    if(typeof(simpleComedian)=="object"){
+                        self.$setState(simpleComedian);
+                    }
+                }
+                
                 this.$$("form[data-action='handlewithform']").setCustomValidityFormTranslations();  
                 $$("div[data-target='borndatepicker']").bornDatePicker();
             }

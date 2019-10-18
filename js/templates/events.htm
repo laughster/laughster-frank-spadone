@@ -2,12 +2,12 @@
     <!-- Initial Page, "data-name" contains page name -->
     <div data-name="events" class="page visible-navbar">
         <div class="wrapFirstTimeNotifications {{classFirstTimeActivated}}">
-            <div class="text-align-center text-tiny animated fadeIn singleItem" data-target="first-time" data-etype="1">
+            <div class="text-align-center text-tiny animated fadeIn singleItem" data-target="first-time" data-etype="1" style="background-color: rgba({{classOverlayColor}}, 0.95);">
                 <div class="text-color-white size-22">Find tickets faster by<br />swipping left on an event.</div>
                 <div class="padd10"></div>
                 <div>
                     <div class="inline-block">
-                        <a href="#" class="button btn-blue button-fill round50 size-16 paddLeftRight40 paddTopBottom10" @click="firstTimeNotificationGot" data-etype="1">GOT IT</a>
+                        <a href="#" class="button button-fill round50 size-16 paddLeftRight40 paddTopBottom10" @click="firstTimeNotificationGot" data-etype="1" style="background-color: rgb({{classButtonColor}});">GOT IT</a>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     <div class="inheritheight bg-color-white-opacity8"></div>
                 </div>
                 <div class="navbar-inner paddLeftRight20 forcedZIndexHigher">
-                    <div id="appid" class="text-color-darkblue">
+                    <div id="appid" style="color: rgb({{classOverlayColor}});">
                         <div class="inline-block size-26 strong" data-target="nav-title">Events</div>
                     </div>
                     <div class="right text-color-white">
@@ -45,8 +45,8 @@
                                     <a href="/eventdetails/" class="link abs top0 left0 fullwidth fullheight forcedZIndexHigher" data-id="{{id}}" data-context='{{stringify this}}'></a>
                                     <div>
                                         <div class="wrap-fine-date text-center text-uppercase">
-                                            <div class="wrap-day size-36 lineheight100 text-tiny">{{days}}</div>
-                                            <div class="wrap-month size-13 lineheight100">{{month}}</div>
+                                            <div class="wrap-day size-36 lineheight100 text-tiny" style="color: rgb({{../classOverlayColor}});">{{days}}</div>
+                                            <div class="wrap-month size-13 lineheight100" style="color: rgb({{../classOverlayColor}});">{{month}}</div>
                                         </div>
                                     </div>
                                     <div class="flex1 align-items-center text-align-left paddLeftRight10">
@@ -97,7 +97,9 @@
             var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
             if(typeof(simpleComedian)=="object"){
                 self.$setState({
-                    iconthumbnailAPP: simpleComedian.iconthumbnailAPP
+                    iconthumbnailAPP: simpleComedian.iconthumbnailAPP,
+                    classOverlayColor: simpleComedian.classOverlayColor,
+                    classButtonColor: simpleComedian.classButtonColor
                 });
             }
         }

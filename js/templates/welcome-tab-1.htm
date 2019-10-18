@@ -13,13 +13,13 @@
                     <div class="padd10"></div>
                     <div class="fRow text-align-center">
                         <div class="inline-block">
-                            <button type="submit" class="button button-fill btn-blue round50"><div class="size-16 paddLeftRight40 paddTopBottom10">NEXT</div></button>
+                            <button type="submit" class="button button-fill round50" style="background: rgb({{classButtonColor}}); border-color: rgb({{classButtonColor}});"><div class="size-16 paddLeftRight40 paddTopBottom10">NEXT</div></button>
                         </div>
                     </div>
                     <div class="padd10"></div>
                     <div class="fRow text-align-center text-color-white-opacity35">
                         By clicking "NEXT" you agree<br />
-                        to {{firstname}}'s <a href="https://www.laughsterapp.com/privacypolicy/{{firstnameUpper}}_{{lastnameUpper}}" class="text-color-blue link external" target="_system">Privacy Policy</a>.
+                        to {{firstname}}'s <a href="https://www.laughsterapp.com/privacypolicy/{{firstnameUpper}}_{{lastnameUpper}}" class="link external" target="_system" style="color: rgb({{classButtonColor}});">Privacy Policy</a>.
                     </div>
                     <div class="padd10"></div>
                 </div>
@@ -31,7 +31,8 @@
   return {
     data() {
       return {
-        classInitHidden: "hidden"
+        classInitHidden: "hidden",
+        classButtonColor: "28,139,211"
       }
     }, 
     on: {

@@ -1,6 +1,11 @@
 <template>
     <!-- Initial Page, "data-name" contains page name -->
-    <div data-name="podcastDetails" class="page bg-color-violete-gradient visible-navbar">
+    <div data-name="podcastDetails" class="page visible-navbar" 
+         style="background: rgba({{classOverlayColor}},1);
+background: linear-gradient(to bottom, rgba({{classOverlayColor}},1) 0%, rgba({{classOverlayColor}},0.79) 100%);
+background: -webkit-linear-gradient(top, rgba({{classOverlayColor}},1) 0%, rgba({{classOverlayColor}},0.79) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba({{classOverlayColor}},1)), color-stop(100%, rgba({{classOverlayColor}},0.79)));"
+         >
         <div class="navbar navbar-details">
             <div class="navbar-inner">
                 <div class="d-flex fullwidth text-color-white justify-content-between align-items-center">
@@ -45,7 +50,7 @@
                                     </div>
                                     <div id="buttons-play" class="inline-block text-align-center buttons-play {{classPlayButton}}">
                                         <a id="playbtn" href="#" class="size-44 wrap-custom-player-playbutton fixed-width-70">
-                                            <div class="bg-play-button bg-image animated zoomIn"></div>
+                                            <div class="bg-play-button circled animated zoomIn"><div class="wrap-triangle abs top50" style="border-color: transparent transparent transparent rgb({{../classOverlayColor}});"></div></div>
                                         </a>
                                         <a href="#" class="size-44 wrap-custom-player-pausebutton fixed-width-70">
                                             <div class="wrap-custom-player-preloader abs top0 left0 fullwidth fullheight">
@@ -81,11 +86,24 @@
     on: {
       pageAfterIn: function () {
             var self = this;
-            console.log(this.url);
+            
+            if(localStorage.getItem("userAPPInfo")!==null){
+                var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+                if(typeof(simpleComedian)=="object"){
+                    self.$setState({
+                        classOverlayColor: simpleComedian.classOverlayColor,
+                        classButtonColor: simpleComedian.classButtonColor
+                    });
+                }
+            }
+            
             const player = new Plyr('audio', {
                 controls: ['progress']
             });
             window.player = player;
+           
+            $$(".plyr--full-ui input[type=range]").css({color: simpleComedian.classOverlayColor});
+           
             $$("#buttons-play").on("click", function(){
                togglePlay(player, self);
             });

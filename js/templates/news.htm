@@ -2,12 +2,12 @@
     <!-- Initial Page, "data-name" contains page name -->
     <div data-name="news" class="page visible-navbar">
         <div class="wrapFirstTimeNotifications {{classFirstTimeActivated}}">
-            <div class="text-align-center text-tiny animated fadeIn singleItem" data-target="first-time" data-etype="3">
+            <div class="text-align-center text-tiny animated fadeIn singleItem" data-target="first-time" data-etype="3" style="background-color: rgba({{classOverlayColor}}, 0.95);">
                 <div class="text-color-white size-22">Swipe left on a news<br />article to share it.</div>
                 <div class="padd10"></div>
                 <div>
                     <div class="inline-block">
-                        <a href="#" class="button btn-blue button-fill round50 size-16 paddLeftRight40 paddTopBottom10" @click="firstTimeNotificationGot" data-etype="3">GOT IT</a>
+                        <a href="#" class="button button-fill round50 size-16 paddLeftRight40 paddTopBottom10" @click="firstTimeNotificationGot" data-etype="3" style="background-color: rgb({{classButtonColor}});">GOT IT</a>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@
                     <div class="inheritheight bg-color-white-opacity8"></div>
                 </div>
                 <div class="navbar-inner paddLeftRight20 forcedZIndexHigher">
-                    <div id="appid" class="text-color-darkblue">
+                    <div id="appid" style="color: rgb({{classOverlayColor}});">
                         <div class="inline-block size-26 strong" data-target="nav-title">News</div>
                     </div>
                     <div class="right text-color-white">
@@ -54,13 +54,13 @@
                                         </div>
                                         <div class="text-holder">
                                             <div class="padd5"></div>
-                                            <div class="size-14 text-color-blue">{{publishing_company}}</div>
+                                            <div class="size-14" style="color: rgb({{../classButtonColor}});">{{publishing_company}}</div>
                                             {{#js_if "@index == '0'"}}
-                                                <div class="wrapNewsTitle size-20 lineheight120 strong text-color-violete">
+                                                <div class="wrapNewsTitle size-20 lineheight120 strong" style="color: rgb({{../classOverlayColor}});">
                                             {{else}}
-                                                <div class="wrapNewsTitle size-14 lineheight120 strong text-color-violete">
+                                                <div class="wrapNewsTitle size-14 lineheight120 strong" style="color: rgb({{../classOverlayColor}});">
                                             {{/js_if}}
-                                            <a class="link external text-color-violete" href="{{url}}" target="_system" data-action="trackclicks" data-context="trackMainSection" data-etype="3" data-socialbutton="url">
+                                            <a class="link external" href="{{url}}" target="_system" data-action="trackclicks" data-context="trackMainSection" data-etype="3" data-socialbutton="url" style="color: rgb({{../classOverlayColor}});">
                                                 {{name}}
                                             </a>
                                             </div>
@@ -135,7 +135,9 @@
                 if(typeof(simpleComedian)=="object"){
                     self.$setState({
                         iconthumbnailAPP: simpleComedian.iconthumbnailAPP,
-                        userinfo: simpleComedian
+                        userinfo: simpleComedian,
+                        classOverlayColor: simpleComedian.classOverlayColor,
+                        classButtonColor: simpleComedian.classButtonColor
                     });
                 }
             }

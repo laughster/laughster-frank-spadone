@@ -11,7 +11,7 @@
                 <div class="abs top0 left0 fullwidth fullheight signature-bg forcedZIndexHigher {{hiddenClassSignature}}" data-target="ifappuserdetected" style="background-image: url('{{signatureThumbnailAPP}}');"></div>
                 <div class="mAOLThumb abs top0 left0 fullwidth fullheight unveil blured forcedZIndexLower overflow {{hiddenClassIfFromLogin}}">
                     <div class="blurred-outer inheritheight">
-                        <div class="overlayViolete forcedZIndexHigher"></div>
+                        <div class="forcedZIndexHigher abs top0 left0 fullwidth fullheight" style="background-color: rgba({{classOverlayColor}}, 0.6);"></div>
                         <div class="bg-image blurred fullwidth fullheight abs top0 left0 forcedZIndexLower {{classBlurBgAnimation}}" style="background-image: url('{{iconthumbnailAPP}}');" />
 
                         </div>
@@ -29,7 +29,7 @@
                                             <span class="badge color-red size-14 {{classStoreBtnBadgeHidden}}">{{newstoreproductsadded}}</span>
                                         {{/if}}
                                     </div>
-                                    <a class="text-color-blue1 size-24 animated abs top0 left0 fullwidth fullheight {{classStoreBtnHidden}} external forcedZIndexLower bg-image" href="{{onlinestoreurl}}" target="_system" data-action="trackclicks" data-context="trackMainSection" data-etype="9" data-socialbutton="onlinestoreurl" style="background-image: url('./images/laughster_shopping_cart.png');">
+                                    <a class="size-24 animated abs top0 left0 fullwidth fullheight circled {{classStoreBtnHidden}} external forcedZIndexLower bg-image" href="{{onlinestoreurl}}" target="_system" data-action="trackclicks" data-context="trackMainSection" data-etype="9" data-socialbutton="onlinestoreurl" style="background-image: url('./images/laughster_shopping_cart.png'); background-color: rgb({{classButtonColor}});">
                                     </a>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <div id="wrapBiography" class="wrapWelcomeComedianIntro text-align-left bg-color-lightgray paddTopBottom30 paddLeftRight35 animated overflow zoomIn {{classInitHidden}} {{classHiddenIfFromLogin}}">
-                <div class="text-color-darkblue size-16 lineheight120 strong">{{biographytitle}}</div>
+                <div class="size-16 lineheight120 strong" style="color: rgb({{classOverlayColor}});">{{biographytitle}}</div>
                 <div class="padd10"></div>
                 <div class="bodytext text-color-gray text-align-left size-14">
                     {{biographydescription}}
@@ -128,7 +128,7 @@
                 <div class="padd15"></div>
                 <div class="fRow margin-bottom text-align-center">
                     <div class="inline-block">
-                        <a href="mailto:{{email}}" class="button button-fill btn-blue round50 link external text-uppercase" data-action="trackclicks" data-context="trackBooking"><div class="size-16 paddLeftRight20 paddTopBottom10">Book {{firstname}}</div></a>
+                        <a href="mailto:{{email}}" class="button button-fill round50 link external text-uppercase" data-action="trackclicks" data-context="trackBooking" style="background: rgb({{classButtonColor}}); border-color: rgb({{classButtonColor}});"><div class="size-16 paddLeftRight20 paddTopBottom10">Book {{firstname}}</div></a>
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@
                 {{#if wwwurl}}
                     <div class="fRow text-align-center">
                         <div class="inline-block">
-                            <a class="external button button-fill btn-blue round50" href="{{wwwurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="wwwurl"><div class="size-16 paddLeftRight20 paddTopBottom10">VISIT MY WEBSITE</div></a>
+                            <a class="external button button-fill round50" href="{{wwwurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="wwwurl" style="background: rgb({{classButtonColor}}); border-color: rgb({{classButtonColor}});"><div class="size-16 paddLeftRight20 paddTopBottom10">VISIT MY WEBSITE</div></a>
                         </div>
                     </div>
                     <div class="padd10"></div>
@@ -164,7 +164,9 @@
                         {{#if facebookurl}}
                             <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
                                 <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{facebookurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="facebookurl">
-                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                    <div class="circled abs left0 fullwidth text-align-center size-26" style="color: rgb({{classOverlayColor}}); box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -moz-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -webkit-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});">
                                         <div class="abs left0 top50 fullwidth">
                                             <i class="fab fa-facebook-f abs left50 top50"></i>
                                         </div>
@@ -175,7 +177,9 @@
                         {{#if twitterhandle}}
                             <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
                                 <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="https://twitter.com/{{twitterhandle}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="twitterhandle">
-                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                    <div class="circled abs left0 fullwidth text-align-center size-26" style="color: rgb({{classOverlayColor}}); box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -moz-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -webkit-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});">
                                         <div class="abs left0 top50 fullwidth">
                                             <i class="fab fa-twitter abs left50 top50"></i>
                                         </div>
@@ -186,7 +190,9 @@
                         {{#if instagramurl}}
                             <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
                                 <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{instagramurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="instagramurl">
-                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                    <div class="circled abs left0 fullwidth text-align-center size-26" style="color: rgb({{classOverlayColor}}); box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -moz-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -webkit-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});">
                                         <div class="abs left0 top50 fullwidth">
                                             <i class="fab fa-instagram abs left50 top50"></i>
                                         </div>
@@ -197,7 +203,9 @@
                         {{#if youtubeurl}}
                             <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
                                 <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{youtubeurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="youtubeurl">
-                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                    <div class="circled abs left0 fullwidth text-align-center size-26" style="color: rgb({{classOverlayColor}}); box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -moz-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -webkit-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});">
                                         <div class="abs left0 top50 fullwidth">
                                             <i class="fab fa-youtube abs left50 top50"></i>
                                         </div>
@@ -208,7 +216,9 @@
                         {{#if linkedinurl}}
                             <div class="inline-block fixed-width-50 padd5">
                                 <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{linkedinurl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="linkedinurl">
-                                    <div class="circled abs left0 fullwidth text-color-darkblue text-align-center size-26">
+                                    <div class="circled abs left0 fullwidth text-align-center size-26" style="color: rgb({{classOverlayColor}}); box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -moz-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -webkit-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});">
                                         <div class="abs left0 top50 fullwidth">
                                             <i class="fab fa-linkedin-in abs left50 top50"></i>
                                         </div>
@@ -219,7 +229,9 @@
                         {{#if imdburl}}
                             <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
                                 <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{imdburl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="imdburl">
-                                    <div class="circled abs left0 fullwidth text-color-white text-align-center size-18">
+                                    <div class="circled abs left0 fullwidth text-align-center size-18" style="color: rgb({{classOverlayColor}}); box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -moz-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -webkit-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});">
                                         <div class="abs left0 top50 fullwidth">
                                             IMDB
                                         </div>
@@ -230,7 +242,9 @@
                         {{#if vimeourl}}
                             <div class="inline-block fixed-width-50 padd5 marginLeftRight5">
                                 <a class="singleItem animated fadeIn link external fullpadding relative margin-bottom" href="{{vimeourl}}" target="_system" data-action="trackclicks" data-context="trackSocialMediaButtons" data-socialbutton="vimeourl">
-                                    <div class="circled abs left0 fullwidth text-color-white text-align-center size-26">
+                                    <div class="circled abs left0 fullwidth text-align-center size-26" style="color: rgb({{classOverlayColor}}); box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -moz-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});
+    -webkit-box-shadow: 0 0 0 3px rgb({{classOverlayColor}});">
                                         <div class="abs left0 top50 fullwidth">
                                             <i class="fab fa-vimeo-v abs left50 top50"></i>
                                         </div>
@@ -257,7 +271,9 @@
               classPageBgColor: homePageReachedFromLogin ? "bg-color-transparent" : "bg-color-white",
               classFullHeight: homePageReachedFromLogin ? "fullheight" : "",
               classHiddenIfFromLogin: homePageReachedFromLogin ? "hidden" : "",
-              classFadeInUp: "fadeInUp"
+              classFadeInUp: "fadeInUp",
+              classOverlayColor: "35,24,82",
+              classButtonColor: "28,139,211"
             }
         }, 
         on: {
@@ -269,6 +285,9 @@
             if(!homePageReloaded){
                 //Call some functions only on first page loading
                 homePageReloaded=true;
+                if(loadAgain){
+                    loadHomeAdvancedComedian(self, appID);
+                }
                 if(localStorage.getItem("userAPPInfo")!==null){
                 var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
                     if(typeof(simpleComedian)=="object"){
@@ -290,9 +309,7 @@
                         }, 1000);
                     }
                 }
-                if(loadAgain){
-                    loadHomeAdvancedComedian(self, appID);
-                }
+                
                 setTimeout(function(){
                     loadComedianData(self, "loadComedianGalleries");
                 }, 1000);

@@ -37,7 +37,7 @@
                 <div class="padd10"></div>
                 <div class="fRow margin-bottom text-align-center">
                     <div class="inline-block">
-                        <button type="submit" class="button button-fill btn-blue round50"><div class="size-16 paddLeftRight30 paddTopBottom10">CONTINUE</div></button>
+                        <button type="submit" class="button button-fill round50" style="background: rgb({{classButtonColor}}); border-color: rgb({{classButtonColor}});"><div class="size-16 paddLeftRight30 paddTopBottom10">CONTINUE</div></button>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,8 @@
     return {
         data() {
             return {
-              classInitHidden: "hidden"
+              classInitHidden: "hidden",
+              classButtonColor: "28,139,211"
             }
         }, 
         on: {
@@ -57,6 +58,14 @@
                 var self = this;
                 loadWelcomeTabRegions(self);
                 loadWelcomeTabLocationComedian(self);
+                
+                if(localStorage.getItem("userAPPInfo")!==null){
+                    var simpleComedian=JSON.parse(localStorage.getItem("userAPPInfo"));
+                    if(typeof(simpleComedian)=="object"){
+                        self.$setState(simpleComedian);
+                    }
+                }
+                
                 $$("select[name='aEOE_appusercountry']").attr("required", "required");
                 $$("select[name='aEOE_appuserprovince']").attr("required", "required");
                 $$("input[name='aEOE_appusercity']").attr("required", "required");

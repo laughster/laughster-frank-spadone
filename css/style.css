@@ -612,6 +612,13 @@ div.page.visible-navbar > .navbar{
     border: solid 1px #1c8bd3;
 }
 
+.btn-white{
+    color: #000;
+    background-color: #fff;
+    border: solid 1px #fff;
+}
+
+
 .box-shadow{
     box-shadow: 0 0 10px rgba(0,0,0, 0.2);
     -moz-box-shadow: 0 0 10px rgba(0,0,0, 0.2);
@@ -725,15 +732,29 @@ div.page.visible-navbar > .navbar{
 #wrapVideos .bg-play-button{
     width: 54px;
     height: 54px;
-    background-image: url('../images/video_play_button.png');
     animation-delay: 1s;
+}
+
+.bg-play-button > div.wrap-triangle{
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -9px;
+    z-index: 20;
+    border-style: solid;
+    border-width: 14px 24px;
+    border-color: transparent transparent transparent #fff;
 }
 
 #wrapPodcasts .bg-play-button{
     width: 40px;
     height: 40px;
-    background-image: url('../images/video_play_button.png');
     animation-delay: 0.5s;
+}
+
+#wrapPodcasts .bg-play-button > div.wrap-triangle{
+    margin-left: -6px;
+    border-width: 10px 17px;
 }
 
 .wrapPlayer .plyr--audio .plyr__controls{
@@ -761,7 +782,7 @@ div.page.visible-navbar > .navbar{
 .wrapPlayer .bg-play-button{
     width: 70px;
     height: 70px;
-    background-image: url('../images/video_play_button_inverse.png');
+    background-color: #fff;
     animation-duration: 0.3s;
     -moz-animation-duration: 0.3s;
     -webkit-animation-duration: 0.3s;
@@ -1010,6 +1031,10 @@ div.page.visible-navbar > .navbar{
     right: -4px;
 }
 
+.wrap-store-icon a.circled{
+    background-size: 60% auto;
+}
+
 .badges-links{
     z-index: 100;
     color: rgb(109,40,79);
@@ -1192,7 +1217,6 @@ div.wrapFirstTimeNotifications.activated{
 div.wrapFirstTimeNotifications > div{
     height: inherit;
     padding-top: 100px;
-    background-color: rgba(35,24,82, 0.95);
 }
 
 .list ul:before, .list ul:after{
@@ -1255,13 +1279,9 @@ div.wrapFirstTimeNotifications > div{
 .wrap-single-comedian .nice-circle > .circled.bg-image{
     width: 100%;
     height: 100%;
-    box-shadow: 0 0 0 3px #21165f;
-    -moz-box-shadow: 0 0 0 3px #21165f;
-    -webkit-box-shadow: 0 0 0 3px #21165f;
 }
 
-.wrap-single-comedian .nice-circle > .circled.bg-image:after{
-    content: "";
+.wrap-single-comedian .nice-circle > .circled.bg-image > div.wrap-small-corner{
     display: block;
     position: absolute;
     z-index: 20;
@@ -1269,7 +1289,6 @@ div.wrapFirstTimeNotifications > div{
     left: 82%;
     border-style: solid;
     border-width: 6px 6px;
-    border-color: #21165f transparent transparent transparent;
     transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
