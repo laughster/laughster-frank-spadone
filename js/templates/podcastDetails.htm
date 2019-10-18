@@ -1,11 +1,6 @@
 <template>
     <!-- Initial Page, "data-name" contains page name -->
-    <div data-name="podcastDetails" class="page visible-navbar" 
-         style="background: rgba({{classOverlayColor}},1);
-background: linear-gradient(to bottom, rgba({{classOverlayColor}},1) 0%, rgba({{classOverlayColor}},0.79) 100%);
-background: -webkit-linear-gradient(top, rgba({{classOverlayColor}},1) 0%, rgba({{classOverlayColor}},0.79) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba({{classOverlayColor}},1)), color-stop(100%, rgba({{classOverlayColor}},0.79)));"
-         >
+    <div data-name="podcastDetails" class="page visible-navbar">
         <div class="navbar navbar-details">
             <div class="navbar-inner">
                 <div class="d-flex fullwidth text-color-white justify-content-between align-items-center">
@@ -19,7 +14,10 @@ background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba({{classO
                 </div>
             </div>
         </div>
-        <div class="page-content">
+        <div class="page-content" style="background: rgba({{classOverlayColor}},1);
+background: linear-gradient(to bottom, rgba({{classOverlayColor}},1) 0%, rgba({{classOverlayColor}},0.79) 100%);
+background: -webkit-linear-gradient(top, rgba({{classOverlayColor}},1) 0%, rgba({{classOverlayColor}},0.79) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba({{classOverlayColor}},1)), color-stop(100%, rgba({{classOverlayColor}},0.79)));">
             <div id="wrapSinglePodcast" class="wrapSinglePodcast">
                 <div class="hidden"><a data-target="click-to-track" href="#" data-action="trackclicks" data-context="trackMainSection" data-etype="4" data-id="{{id}}"></a></div>
                 <div class="padd30">
