@@ -99,8 +99,14 @@ background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba({{classO
                 controls: ['progress']
             });
             window.player = player;
-           
-            $$(".plyr--full-ui input[type=range]").css({color: simpleComedian.classOverlayColor});
+            
+            player.on('ready', event => {
+                const instance = event.detail.plyr;
+                $$(instance.elements.inputs.seek).css({
+                    color: "rgb(" + simpleComedian.classButtonColor + ")"
+                });
+            });
+            
            
             $$("#buttons-play").on("click", function(){
                togglePlay(player, self);
